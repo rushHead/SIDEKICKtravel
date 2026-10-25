@@ -1,1 +1,7 @@
-console.log("Hello via Bun!");
+import { Elysia } from "elysia";
+
+const app = new Elysia()
+
+app.listen(3000);
+
+

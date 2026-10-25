@@ -163,6 +163,8 @@ cannot use express obviously bcoz beginner level noob server cannot handle shit 
 
 Yooo i Found this new server shii called ....."Elysia"...sounds perfect for my use case 
 
+To use Elysia ... use the command " bun add elysia "
+
 
  What does Elysia actually do?
 
