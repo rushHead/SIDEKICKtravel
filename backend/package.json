@@ -4,9 +4,22 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@prisma/cli-engine": "0.9.0",
+    "@types/bun": "latest",
+    "@types/node": "^26.6.5",
+    "prisma": "^8.0.0-rc.27"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.10.1",
+    "@prisma/extension-accelerate": "^3.0.1",
+    "@prisma/orm-postgres": "^8.0.0-rc.20",
+    "dotenv": "^18.0.9",
+    "elysia": "^1.4.30"
+  },
+  "scripts": {
+    "contract:emit": "prisma contract emit"
   }
 }
