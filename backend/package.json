@@ -4,10 +4,10 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@prisma/cli-engine": "0.9.0",
+    "@prisma/cli-engine": "0.7.0",
     "@types/bun": "latest",
     "@types/node": "^26.6.5",
-    "prisma": "^8.0.0-rc.27"
+    "prisma": "8.0.0-rc.22"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -15,11 +15,13 @@
   "dependencies": {
     "@prisma/client": "^7.10.1",
     "@prisma/extension-accelerate": "^3.0.1",
-    "@prisma/orm-postgres": "^8.0.0-rc.20",
+    "@prisma/orm-postgres": "8.0.0-rc.22",
     "dotenv": "^18.0.9",
     "elysia": "^1.4.30"
   },
   "scripts": {
-    "contract:emit": "prisma contract emit"
+    "dev": "bun run --watch src/index.ts",
+    "contract:emit": "prisma contract emit",
+    "db:seed": "bun run src/db/seed.ts"
   }
 }

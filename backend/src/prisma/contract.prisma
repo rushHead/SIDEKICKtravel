@@ -1,21 +1,35 @@
 // use prisma-8
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String?
-  name      String?
-  posts     Post[]
-  createdAt TimestamptzString @default(now())
-  updatedAt temporal.updatedAtString()
+enum Role {
+  USER
+  SALESMAN
+  ADMIN
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt TimestamptzString @default(now())
-  updatedAt temporal.updatedAtString()
+enum AuthProvider {
+  GOOGLE
+  GITHUB
+  EMAIL
 }
+
+model User {
+  id           Int               @id @default(autoincrement())
+  email        String            @unique
+  password     String?
+  name         String?
+  provider     AuthProvider      @default(EMAIL)
+  role         Role              @default(USER)
+  isActive     Boolean           @default(true)
+
+  // Tracks which Admin created this account (for Salesman and Admin accounts).
+  // Self-registered regular users will have createdById as null.
+
+
+  createdById  Int?
+  createdBy    User?             @relation("UserCreator", fields: [createdById], references: [id])
+  createdUsers User[]            @relation("UserCreator")
+
+  createdAt    TimestamptzString @default(now())
+  updatedAt    temporal.updatedAtString()
+}
+
